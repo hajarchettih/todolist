@@ -12,11 +12,13 @@ import { Component } from '@angular/core';
 export class InputButtonUnitComponent {
 title = 'Hello World';
 
-constructor() { 
-  this.title = 'I Love Angular';
-}
+
 changeTitle(newTitle: string): void {
   this.title = newTitle;
+}
+
+getInputValue(event: Event): string {
+  return (event.target as HTMLInputElement).value;
 }
 
 }
