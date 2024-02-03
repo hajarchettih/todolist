@@ -1,24 +1,35 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-input-button-unit',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './input-button-unit.component.html',
-  styleUrls: ['./input-button-unit.component.scss']
-})
+  template: `
+    <input #inputElementRef
+          [value]="title"
+           (keyup.enter)="changeTitle(getInputValue($event))">
 
-export class InputButtonUnitComponent {
-title = 'Hello World';
+    <button (click)="changeTitle('Button Clicked!')">
+      Save
+    </button>
+  `,  
+  styleUrls: ['./input-button-unit.component.scss']  
+})    
+export class InputButtonUnitComponent implements OnInit {
+  title = 'Hello World';
 
+  constructor() { }                     
 
-changeTitle(newTitle: string): void {
-  this.title = newTitle;
-}
+  ngOnInit(): void {
+  }
 
-getInputValue(event: Event): string {
-  return (event.target as HTMLInputElement).value;
-}
-
+  changeTitle(newTitle: string): void {
+    this.title = newTitle;
+  }
+  
+  
+  getInputValue(event: Event) {
+    return (event.target as HTMLInputElement).value;
+  }
 }
