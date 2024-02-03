@@ -8,6 +8,15 @@ import { Component } from '@angular/core';
   templateUrl: './input-button-unit.component.html',
   styleUrls: ['./input-button-unit.component.scss']
 })
+
 export class InputButtonUnitComponent {
+title = 'Hello World';
+
+constructor() { 
+  this.title = 'I Love Angular';
+}
+changeTitle(newTitle: string): void {
+  this.title = newTitle;
+}
 
 }
